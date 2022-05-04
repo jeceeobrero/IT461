@@ -1,5 +1,6 @@
 import pymysql.cursors
 
+
 class Db():
     __instance = None
     connection = None
