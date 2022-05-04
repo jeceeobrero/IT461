@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from flask import Flask, jsonify, request, make_response, g
 from models.dog import Dog
 from models.cat import Cat
@@ -89,6 +90,16 @@ def dog(dog_id):
     if str(request.method).upper() == 'DELETE':
         return jsonify(dog_object.delete(dog_id))
     return jsonify(dog)
+=======
+from flask import Flask, Blueprint
+from v1.dog.router import DogRouter
+
+app = Flask(__name__)
+
+bp_dogs = Blueprint('dogs', __name__, url_prefix='/v1/dogs')
+DogRouter.handler(bp_dogs)
+app.register_blueprint(bp_dogs)
+>>>>>>> 2622563cc2319c397fca3ac0e0d9ea98d7e3b31f
 
 
 if __name__ == "__main__":
