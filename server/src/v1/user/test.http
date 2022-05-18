@@ -1,0 +1,35 @@
+@host = http://127.0.0.1:6000/v1/users
+
+GET {{host}}/?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImplY2VlIiwiaWQiOjEwMCwiZXhwIjoxNjUyOTcxODQ4fQ.v9V7-wEXFj1Y3ri1h8NFThL4Lkarb7QIi4G8_rLcRy8 HTTP/1.1
+
+
+###
+POST {{host}}/?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImplY2VlIiwiaWQiOjEwMCwiZXhwIjoxNjUyOTcxODQ4fQ.v9V7-wEXFj1Y3ri1h8NFThL4Lkarb7QIi4G8_rLcRy8 HTTP/1.1 HTTP/1.1
+Content-Type: application/json
+
+{
+    "id" : 1,
+    "username" : "primrose",
+    "password" : "pass123"
+}
+
+
+###
+PUT {{host}}/?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImplY2VlIiwiaWQiOjEwMCwiZXhwIjoxNjUyOTcxODQ4fQ.v9V7-wEXFj1Y3ri1h8NFThL4Lkarb7QIi4G8_rLcRy8 HTTP/1.1 HTTP/1.1
+Content-Type: application/json
+
+{
+    "id" : 3,
+    "username" : "marufok",
+    "password" : "enebe"
+}
+
+
+### 
+DELETE {{host}}/?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImplY2VlIiwiaWQiOjEwMCwiZXhwIjoxNjUyOTcxODQ4fQ.v9V7-wEXFj1Y3ri1h8NFThL4Lkarb7QIi4G8_rLcRy8 HTTP/1.1 HTTP/1.1
+Content-Type: application/json
+
+[1]
+
+###
+GET {{host}}/?fields=username&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImplY2VlIiwiaWQiOjEwMCwiZXhwIjoxNjUyOTcxODQ4fQ.v9V7-wEXFj1Y3ri1h8NFThL4Lkarb7QIi4G8_rLcRy8 HTTP/1.1 HTTP/1.1

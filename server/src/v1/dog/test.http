@@ -2,11 +2,11 @@
 
 
 ### Get all dogs
-GET {{host}}/?fields=name&offset=0&limit=2 HTTP/1.1
+GET {{host}}/?fields=name&offset=0&limit=2&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImplY2VlIiwiaWQiOjEwMCwiZXhwIjoxNjUyOTcxODQ4fQ.v9V7-wEXFj1Y3ri1h8NFThL4Lkarb7QIi4G8_rLcRy8 HTTP/1.1
 
 
 ### Create new dogs
-POST {{host}}/ HTTP/1.1
+POST {{host}}/?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImplY2VlIiwiaWQiOjEwMCwiZXhwIjoxNjUyOTcxODQ4fQ.v9V7-wEXFj1Y3ri1h8NFThL4Lkarb7QIi4G8_rLcRy8 HTTP/1.1
 Content-Type: application/json
 
 {
@@ -16,7 +16,7 @@ Content-Type: application/json
 
 
 ### Update dogs
-PUT {{host}}/ HTTP/1.1
+PUT {{host}}/?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImplY2VlIiwiaWQiOjEwMCwiZXhwIjoxNjUyOTcxODQ4fQ.v9V7-wEXFj1Y3ri1h8NFThL4Lkarb7QIi4G8_rLcRy8 HTTP/1.1
 Content-Type: application/json
 
 {
@@ -26,7 +26,7 @@ Content-Type: application/json
 
 
 ### Delete dogs
-DELETE {{host}}/ HTTP/1.1
+DELETE {{host}}/?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImplY2VlIiwiaWQiOjEwMCwiZXhwIjoxNjUyOTcxODQ4fQ.v9V7-wEXFj1Y3ri1h8NFThL4Lkarb7QIi4G8_rLcRy8 HTTP/1.1
 Content-Type: application/json
 
 [21,23,12,16,17]
@@ -34,11 +34,11 @@ Content-Type: application/json
 
 
 ### Get single dog
-GET {{host}}/24?fields=id HTTP/1.1
+GET {{host}}/1?fields=id&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImplY2VlIiwiaWQiOjEwMCwiZXhwIjoxNjUyOTcxODQ4fQ.v9V7-wEXFj1Y3ri1h8NFThL4Lkarb7QIi4G8_rLcRy8 HTTP/1.1HTTP/1.1
 
 
 ### Update sing dog
-PUT {{host}}/22 HTTP/1.1
+PUT {{host}}/1?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImplY2VlIiwiaWQiOjEwMCwiZXhwIjoxNjUyOTcxODQ4fQ.v9V7-wEXFj1Y3ri1h8NFThL4Lkarb7QIi4G8_rLcRy8 HTTP/1.1 HTTP/1.1
 Content-Type: application/json
 
 {
@@ -48,4 +48,4 @@ Content-Type: application/json
 
 
 ### Delete single dog
-DELETE {{host}}/22 HTTP/1.1
+DELETE {{host}}/2?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImplY2VlIiwiaWQiOjEwMCwiZXhwIjoxNjUyOTcxODQ4fQ.v9V7-wEXFj1Y3ri1h8NFThL4Lkarb7QIi4G8_rLcRy8 HTTP/1.1 HTTP/1.1
