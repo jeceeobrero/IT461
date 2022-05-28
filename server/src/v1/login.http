@@ -1,4 +1,4 @@
-@host = http://127.0.0.1:6000/v1
+@host = http://127.0.0.1:8080/v1
 
 
 ### Login
@@ -12,5 +12,5 @@ Content-Type: application/json
 
 
 ### Token verification
-GET {{host}}/verify-token?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImplY2VlIiwiaWQiOjEwMCwiZXhwIjoxNjUyOTcxODQ4fQ.v9V7-wEXFj1Y3ri1h8NFThL4Lkarb7QIi4G8_rLcRy8 HTTP/1.1
+GET {{host}}/verify-token?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImplY2VlIiwiaWQiOjEwMCwiZXhwIjoxNjUzODMwMDY4fQ.sMNxu8dIg-YlcBzyqjfo7Hzdu2UQgRSZ3ssq7_OI1k0 HTTP/1.1
 

@@ -1,17 +1,17 @@
-@host = http://127.0.0.1:6000/v1/dogs
+@host = http://127.0.0.1:8080/v1/dogs
 
 
 ### Get all dogs
-GET {{host}}/?fields=name&offset=0&limit=2&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImplY2VlIiwiaWQiOjEwMCwiZXhwIjoxNjUyOTcxODQ4fQ.v9V7-wEXFj1Y3ri1h8NFThL4Lkarb7QIi4G8_rLcRy8 HTTP/1.1
+GET {{host}}/?fields=name&offset=0&limit=2&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImplY2VlIiwiaWQiOjEwMCwiZXhwIjoxNjUzODMwMDY4fQ.sMNxu8dIg-YlcBzyqjfo7Hzdu2UQgRSZ3ssq7_OI1k0 HTTP/1.1
 
 
 ### Create new dogs
-POST {{host}}/?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImplY2VlIiwiaWQiOjEwMCwiZXhwIjoxNjUyOTcxODQ4fQ.v9V7-wEXFj1Y3ri1h8NFThL4Lkarb7QIi4G8_rLcRy8 HTTP/1.1
+POST {{host}}/?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImplY2VlIiwiaWQiOjEwMCwiZXhwIjoxNjUzODMwMDY4fQ.sMNxu8dIg-YlcBzyqjfo7Hzdu2UQgRSZ3ssq7_OI1k0 HTTP/1.1
 Content-Type: application/json
 
 {
-    "id": 0,
-    "name": "Blackie5"
+    "id": 2,
+    "name": "adad"
 }
 
 
