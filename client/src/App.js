@@ -2,7 +2,7 @@ import Register from './components/Register';
 import Login from './components/Login';
 import Home from './components/Home';
 import Layout from './components/Layout';
-import Dogs from './components/Dogs';
+import Dogs from './components/Dog/Dogs';
 import Admin from './components/Admin';
 import Missing from './components/Missing';
 import Unauthorized from './components/Unauthorized';
@@ -12,10 +12,15 @@ import RequireAuth from './components/RequireAuth';
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import useAxiosPrivate from './hooks/useAxiosPrivate';
-import DogAdd from './components/DogAdd';
-import DogDetail from './components/DogDetail';
-import DogEdit from './components/DogEdit';
-import DogDelete from './components/DogDelete';
+import DogAdd from './components/Dog/DogAdd';
+import DogDetail from './components/Dog/DogDetail';
+import DogEdit from './components/Dog/DogEdit';
+import DogDelete from './components/Dog/DogDelete';
+import Cats from './components/Cat/Cats';
+import CatAdd from './components/Cat/CatAdd';
+import CatDetail from './components/Cat/CatDetail';
+import CatEdit from './components/Cat/CatEdit';
+import CatDelete from './components/Cat/CatDelete';
 
 const ROLES = {
   'User': 2001,
@@ -25,15 +30,17 @@ const ROLES = {
 
 function App() {
   const [dogs, setDogs] = useState([]);
-  const [url, setUrl] = useState('/dogs/?limit=3&offset=0');
+  const [cats, setCats] = useState([]);
+  const [urlDog, setUrlDog] = useState('/dogs/?limit=3&offset=0');
+  const [urlCat, setUrlCat] = useState('/cats/?limit=3&offset=0');
   const axiosPrivate = useAxiosPrivate();
   const navigate = useNavigate();
   const location = useLocation();
 
-  const getDogs = async (url, options) => {
-    setUrl(url);
+  const getDogs = async (urlDog, options) => {
+    setUrlDog(urlDog);
     try {
-        const response = await axiosPrivate.get(url, options);
+        const response = await axiosPrivate.get(urlDog, options);
         console.log(response.data);
         setDogs(response.data);
     } catch (err) {
@@ -41,11 +48,28 @@ function App() {
         navigate('/login', { state: { from: location }, replace: true });
     }
   }
+
+  const getCats = async (urlCat, options) => {
+    setUrlCat(urlCat);
+    try {
+        const response = await axiosPrivate.get(urlCat, options);
+        console.log(response.data);
+        setCats(response.data);
+    } catch (err) {
+        console.error(err);
+        navigate('/login', { state: { from: location }, replace: true });
+    }
+  }
+
   useEffect(() => {
     const controller = new AbortController();
-    getDogs(url, {
+    getDogs(urlDog, {
         signal: controller.signal
     });
+
+    getCats(urlCat, {
+      signal: controller.signal
+    })
     return () => {
         controller.abort();
     }
@@ -55,23 +79,45 @@ function App() {
     console.log('DOG: ', dog);
     const response = await axiosPrivate.post('dogs/', JSON.stringify(dog));
     console.log(response.data);
-    getDogs(url);
+    getDogs(urlDog);
   }
 
   const dogUpdateHandler = async (dog) => {
     console.log('DOG: ', dog);
     const response = await axiosPrivate.put('dogs/', JSON.stringify(dog));
     console.log(response.data);
-    getDogs(url);
+    getDogs(urlDog);
   }
 
   const dogDeleteHandler = async (dog) => {
     console.log('Dog: ', dog);
     const response = await axiosPrivate.delete(`dogs/${dog.id}`);
     console.log(response.data);
-    getDogs(url);
+    getDogs(urlDog);
   }
 
+  const catAddHandler = async (cat) => {
+    console.log('CAT: ', cat);
+    const response = await axiosPrivate.post('cats/', JSON.stringify(cat));
+    console.log(response.data);
+    getCats(urlCat);
+  }
+
+  const catUpdateHandler = async (cat) => {
+    console.log('CAT: ', cat);
+    const response = await axiosPrivate.put('cats/', JSON.stringify(cat));
+    console.log(response.data);
+    getCats(urlCat);
+  }
+
+  const catDeleteHandler = async (cat) => {
+    console.log('Cat: ', cat);
+    const response = await axiosPrivate.delete(`cats/${cat.id}`);
+    console.log(response.data);
+    getCats(urlCat);
+  }
+
+  
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
@@ -92,6 +138,12 @@ function App() {
           <Route path="dogs/view/:id" element={<DogDetail />} />
           <Route path="dogs/edit/:id" element={<DogEdit updateHandler={dogUpdateHandler}/>} />
           <Route path="dogs/delete/:id" element={<DogDelete deleteHandler={dogDeleteHandler}/>} />
+
+          <Route path="cats" element={<Cats cats={cats} getCats={getCats}/>} />
+          <Route path="cats/create" element={<CatAdd addHandler={catAddHandler}/>} />
+          <Route path="cats/view/:id" element={<CatDetail />} />
+          <Route path="cats/edit/:id" element={<CatEdit updateHandler={catUpdateHandler}/>} />
+          <Route path="cats/delete/:id" element={<CatDelete deleteHandler={catDeleteHandler}/>} />
         </Route>
 
 
